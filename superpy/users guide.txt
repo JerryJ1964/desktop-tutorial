@@ -1,0 +1,44 @@
+Superpy
+
+Explanation: 
+
+Please note that this code assumes the presence of certain files such as "bought.csv", "sold.csv", "date.txt", and "users_guide.txt". 
+ 
+Commands:
+
+  bought:           Bought a product
+  sold:             Sold a product
+  report:           Generate reports
+  export:           Export data to CSV
+  advance_time:     Advance or reverse the current date
+
+Examples:
+
+  Bought a product:
+    Command: python super.py bought--product-name banaan --price 3,95 --expiration-date 2023-09-13 --quantity 3
+  
+
+  Sold a product:
+    Command: python super.py sold --product-name sinasappel --price 2
+    
+
+  Generate inventory report:
+    Command: python super.py report inventory --now
+    
+
+  Generate revenue report:
+    Command: python super.py report revenue --start-date 2023-08 --end-date 2023-09
+    
+
+  Generate profit report:
+    Command: python super.py report profit --start-date 2023-08 --end-date 2023-09
+    
+
+  Visualize revenue statistics:
+    Command: python super.py report revenue --start-date 2023-08 --end-date 2023-09 --visualize
+     
+
+  Change the time :
+   Command_1: python super.py advance_time 2
+   Command_2: python super.py advance_time -2
+   

@@ -1,0 +1,15 @@
+nr,;id;product_name;bought_id;sell_date;sell_price;quantity
+2;1;sinasappel;6;27-5-2023;5;
+3;2;passionfruit;10;27-5-2023;12;
+4;3;mandarijn;7;27-5-2023;15;
+5;4;tomaat;1;27-5-2023;5;
+6;5;Dragonfruit;10;13-6-2023;11;
+7;6;peer;11;13-6-2023;100;
+8;7;sinasappel;11;11-6-2023;90;
+9;8;karambola;12;11-6-2023;88;
+10;9;sinasappel;11;11-6-2023;70;
+11;10;berry;11;12-6-2023;120;
+12;11;avocaat;11;12-6-2023;80;
+13;12;aardbei;11;12-6-2023;60;
+14;13;citroen;11;15-6-2023;75;
+15;14;lemon;11;13-6-2023;60;
