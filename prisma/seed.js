@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import bookData from '../data/books.json' assert { type: 'json' }
 import userData from '../data/users.json' assert { type: 'json' }
-import orderData from '../data/books.json' assert { type: 'json' }
+import orderData from '../data/orders.json' assert { type: 'json' }
 import recordData from '../data/records.json' assert { type: 'json' }
 
 const prisma = new PrismaClient({ log: ['query', 'info', 'warn', 'error'] })
@@ -35,7 +35,8 @@ for (const record of records) {
     create: record
   })
 }
-const { orders } = orderData.books
+//const { orders } = orderData.books
+const { orders } = orderData;
 //console.log(orderData.books);
 //console.log("orders:", orders);
 for (const order of orders) {
@@ -45,7 +46,7 @@ for (const order of orders) {
     create: {
       ...order,
       books: {
-        connect: order.book_ids.map((book) => ({ id: book.id }))
+        connect: order.book_id((book) => ({ id: book.id }))
       }
     }
   })
@@ -54,9 +55,9 @@ for (const order of orders) {
 // Before or after the other loops in main()
 
 await prisma.order.upsert({
-  where: { id: order.id },
+  where: { id: orders.id },
   update: {},
-  create: order
+  create: orders
 })
 
 
