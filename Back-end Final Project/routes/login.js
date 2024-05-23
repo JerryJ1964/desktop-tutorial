@@ -1,0 +1,24 @@
+
+import { Router } from 'express';
+import userData from '../src/data/users.json' assert { type: 'json' };
+import jwt from 'jsonwebtoken';
+
+const router = Router();
+
+router.post('/', (req, res) => {
+  const secretKey = 'my-secret-key';
+  const { username, password } = req.body;
+  const { users } = userData;
+  const user = users.find(
+    (u) => u.username === username && u.password === password,
+  );
+
+  if (!user) {
+    return res.status(404).json({ message: 'Invalid credentials!' });
+  }
+
+  const token = jwt.sign({ userId: user.id }, secretKey);
+  res.status(417).json({ message: 'Successfully logged in!', token });
+});
+
+export default router;
