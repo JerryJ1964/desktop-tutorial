@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  relationMode      = "prisma"
+}
+
+model amenities {
+  id         String       @id @default(uuid())
+  name       String
+  Properties Properties[]
+}
+
+model Bookings {
+  id             String       @id @default(uuid())
+  userId         String       @default(uuid())
+  propertyId     String       @default(uuid())
+  checkinDate    DateTime
+  checkoutDate   DateTime
+  numberOfGuests Int
+  totalPrice     Int
+  bookingStatus  String
+  Properties     Properties[]
+}
+
+model Hosts {
+  id             String       @id @default(uuid())
+  username       String       @default(uuid())
+  name           String
+  aboutMe        String
+  email          String
+  password       String
+  phoneNumber    String
+  profilePicture String
+  listings       Properties[]
+}
+
+model Properties {
+  id            String      @id @default(uuid())
+  hostId        String      @unique @default(uuid())
+  title         String
+  description   String
+  location      String
+  pricePerNight Decimal
+  bedroomCount  Int
+  bathroomCount Int
+  maxGuestCount Int
+  rating        Int
+  userId        String
+  amenities     amenities[]
+  bookings      Bookings[]
+  reviews       Reviews[]
+  hostedBy      Hosts       @relation(fields: [hostId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  User          Users       @relation(fields: [userId], references: [id])
+
+  @@index([hostId])
+  @@index([userId])
+}
+
+model Reviews {
+  id         String       @id @default(uuid())
+  userId     String       @default(uuid())
+  propertyId String       @default(uuid())
+  rating     Int
+  comment    String
+  Properties Properties[]
+}
+
+model Users {
+  id             String       @id @default(uuid())
+  username       String       @unique
+  password       String
+  name           String
+  email          String
+  phoneNumber    String
+  profilePicture String
+  Properties     Properties[]
+}
