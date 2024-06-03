@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  relationMode      = "prisma"
+}
+
+model amenities {
+  id         String       @id @default(uuid())
+  name       String
+  Properties properties[]
+}
+
+model bookings {
+  id             String       @id @default(uuid())
+  userId         String       @default(uuid())
+  propertyId     String       @default(uuid())
+  checkinDate    DateTime
+  checkoutDate   DateTime
+  numberOfGuests Int
+  totalPrice     Int
+  bookingStatus  String
+  Properties     properties[]
+}
+
+model hosts {
+  id             String       @id @default(uuid())
+  username       String       @default(uuid())
+  name           String
+  aboutMe        String
+  email          String
+  password       String
+  phoneNumber    String
+  profilePicture String
+  listings       properties[]
+}
+
+model properties {
+  id            String  @id @default(uuid())
+  hostId        String  @unique @default(uuid())
+  title         String
+  description   String
+  location      String
+  pricePerNight Decimal
+  bedroomCount  Int
+  bathRoomCount Int
+  maxGuestCount Int
+  rating        Int
+
+  amenities amenities[]
+  bookings  bookings[]
+  reviews   reviews[]
+  hostedBy  hosts       @relation(fields: [hostId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([hostId])
+}
+
+model reviews {
+  id         String       @id @default(uuid())
+  userId     String       @default(uuid())
+  propertyId String       @default(uuid())
+  rating     Int
+  comment    String
+  Properties properties[]
+}
+
+model users {
+  id             String @id @default(uuid())
+  username       String @unique
+  password       String
+  name           String
+  email          String
+  phoneNumber    String
+  profilePicture String
+}
