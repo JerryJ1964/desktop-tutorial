@@ -1,0 +1,40 @@
+{
+    "name": "express-book-app",
+    "version": "1.0.0",
+    "description": "An example application for Express",
+    "main": "index.js",
+    "type": "module",
+    "prisma": {
+        "seed": "node ./prisma/seed.js"
+    },
+    "scripts": {
+        "dev": "nodemon src/index.js",
+        "test-positive": "newman run \"./postman/collections/Bookings API.json\" -e \"./postman/environments/Local.postman_environment.json\"",
+        "test-negative": "newman run \"./postman/collections/Bookings API Negative.json\" -e \"./postman/environments/Local.postman_environment.json\" && npm run sentry:sourcemaps",
+        "test": "npm run test-positive && npm run test-negative",
+        "sentry:sourcemaps": "sentry-cli sourcemaps inject --org none-ke7 --project back-end-final-project c:/Gebruiker/gojer/Winc/Back-end Final Project && sentry-cli sourcemaps upload --org none-ke7 --project back-end-final-project c:/Gebruiker/gojer/Winc/Back-end Final Project"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.0",
+        "prisma": "^5.13.0",
+        "vitest": "^1.6.0"
+    },
+    "dependencies": {
+        "@planetscale/database": "^1.17.0",
+        "@prisma/client": "^5.13.0",
+        "@sentry/node": "^7.112.2",
+        "axios": "^1.6.8",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "express-oauth2-jwt-bearer": "^1.6.0",
+        "init": "^0.1.2",
+        "jsonwebtoken": "^9.0.2",
+        "map": "^1.0.1",
+        "postman": "^0.2.0",
+        "sentry": "^0.1.2",
+        "sequelize": "^6.37.3",
+        "sqlite3": "^5.1.7",
+        "uuid": "^9.0.1",
+        "winston": "^3.13.0"
+    }
+}
