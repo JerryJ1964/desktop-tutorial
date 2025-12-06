@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Portfolio van Jerry van den Berg - ICT & Data Analist, Manager Logistiek Planner en Back-end Developer met expertise in Microsoft Dynamics 365, Power BI, Excel en Node.js">
+    <meta name="keywords"
+        content="Jerry van den Berg, ICT, Data Analist, Manager Logistiek Planner, Back-end Developer, Microsoft Dynamics 365, Power BI, Excel, Node.js, Portfolio">
+    <meta name="author" content="Jerry van den Berg">
+    <title>Jerry van den Berg - Portfolio | ICT & Data Analist, Manager Logistiek Planner en Back-end Developer</title>
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+
+<body>
+    <header>
+        <div class="profile">
+            <img src="assets/profiel-foto.jpg" class="profile-img" alt="Profiel foto">
+            <h1>Jerry van den Berg</h1>
+        </div>
+        <div id="typewriter"></div>
+
+        <nav>
+            <ul>
+                <li><a href="#about">Over mij</a></li>
+                <li><a href="#experience">Ervaring</a></li>
+                <li><a href="#projects">Projecten</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <h2>Over mij</h2>
+        <div id="about-content"></div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+        <h2>Certificaten</h2>
+        <div id="certificates-content"></div>
+
+        <h2>Skills</h2>
+        <div id="skills-content"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+        <h2>Projecten</h2>
+
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">Alles</button>
+            <button class="filter-btn" data-filter="JavaScript">JavaScript</button>
+            <button class="filter-btn" data-filter="Backend">Backend</button>
+            <button class="filter-btn" data-filter="Data">Data</button>
+        </div>
+
+        <div id="projects-content"></div>
+    </section>
+
+    <!-- MODAL -->
+    <div id="project-modal" class="modal hidden"></div>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <div id="contact-content"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; <span id="year"></span> Jerry van den Berg | ICT & Data Analist | Manager Logistiek Planner
+    </footer>
+
+    <!-- External Scripts -->
+    <script type="module" src="scripts/portfolio.js"></script>
+    <script>
+        // Error handler for module loading
+        window.addEventListener('error', function (e) {
+            if (e.target.tagName === 'SCRIPT' && e.target.type === 'module') {
+                console.error('Module loading error:', e);
+                const errorDiv = document.createElement('div');
+                errorDiv.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; background: #ff4444; color: white; padding: 20px; z-index: 10000; text-align: center;';
+                errorDiv.innerHTML = '<h2>⚠️ Server Required</h2><p>ES6 modules require a web server. Please run: <strong>npm start</strong> in the terminal</p><p>Then open: <strong>http://localhost:8080</strong></p>';
+                document.body.insertBefore(errorDiv, document.body.firstChild);
+            }
+        });
+    </script>
+</body>
+
+</html>
