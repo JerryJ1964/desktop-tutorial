@@ -9,7 +9,8 @@ export const portfolioData = {
         roles: [
             "ICT & Data Analist",
             "Manager Logistiek Planner",
-            "Back-end Developer"
+            "Back-end Developer",
+            "Account Manager specialisatie Glastuinbouw"
         ]
     },
     about: [
@@ -117,6 +118,16 @@ export const portfolioData = {
             details: "Analyse en verbetering van logistieke planningprocessen binnen de glastuinbouwsector. Ontwikkeling van tools en workflows voor efficiëntere planning. Integratie tussen planning, productie en distributie voor betere doorlooptijden.",
             date: "2017-heden",
             tags: ["Data", "Backend"],
+            link: "#"
+        }
+        ,
+        {
+            id: 6,
+            title: "Account Manager - specialisatie Glastuinbouw (Agent)",
+            description: "Account management voor klanten in de glastuinbouw, ondersteund door ons bedrijfsagent-systeem.",
+            details: "Verantwoordelijk voor klantrelaties binnen de glastuinbouwsector. Dit project omvat uitvoering van accountmanagement-taken, relatiebeheer, verkoopondersteuning en het inzetten van een intern 'agent' (software/agent persoon) binnen ons bedrijf om klantcommunicatie en follow-ups te automatiseren en te stroomlijnen.",
+            date: "2020-heden",
+            tags: ["Account Management", "Sales", "Glastuinbouw"],
             link: "#"
         }
     ],
