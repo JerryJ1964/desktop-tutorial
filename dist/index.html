@@ -90,6 +90,33 @@
                 document.body.insertBefore(errorDiv, document.body.firstChild);
             }
         });
+
+        // Hide header on scroll down, show on scroll up
+        let lastScrollY = 0;
+        let isScrolling = false;
+        const header = document.querySelector('header');
+        const scrollThreshold = 50; // Pixels to scroll before hiding/showing
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (!isScrolling) {
+                isScrolling = true;
+                
+                if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
+                    // Scrolling DOWN - hide header
+                    header.classList.add('hide');
+                    header.classList.remove('show');
+                } else if (currentScrollY < lastScrollY) {
+                    // Scrolling UP - show header
+                    header.classList.add('show');
+                    header.classList.remove('hide');
+                }
+                
+                lastScrollY = currentScrollY;
+                isScrolling = false;
+            }
+        }, { passive: true });
     </script>
 </body>
 
