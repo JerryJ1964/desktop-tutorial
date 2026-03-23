@@ -23,7 +23,7 @@
     "@sentry/profiling-node": "^8.7.0",
     "async": "^3.2.5",
     "await": "^0.2.6",
-    "axios": "^1.7.2",
+    "axios": "^1.13.5",
     "camelcase": "^8.0.0",
     "client": "^0.0.1",
     "dotenv": "^16.4.5",
